@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import comFun from './comfun.js'
 // 定义组件
 // import Home from './views/main/Home.vue'
 
@@ -9,11 +10,29 @@ Vue.use(Router)
 
 // 定义路由
 const routes = [
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      title: 'Login - 登录',
+      hideInMenu: true
+    },
+    component: () => import('./Login.vue')
+  },
   // 总览首页
   {
     path: '/main/home',
     name: 'home',
     component: () => import('./views/main/Home.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      title: 'Login - 登录',
+      hideInMenu: true
+    },
+    component: () => import('./Login.vue')
   },
   // 生产监管总览
   {
@@ -68,12 +87,6 @@ const routes = [
   {
     path: '/main/test',
     component: Test
-  },
-  {
-    path: '/production/home',
-    name: 'produceddata',
-    // 可以这样引入
-    component: () => import('./views/production/Home.vue')
   }
 ]
 
@@ -84,7 +97,18 @@ var router = new Router({
 })
 // 设置跳转规则（管理员或者未登录状态）
 router.beforeEach((to, from, next) => {
-  next()
+  // 取得用户数据
+  let username = comFun.getCookie('roadusername')
+  if (!username) {
+    console.log('没有' + username)
+    next({
+      name: 'login' // 跳转到登录页
+    })
+  } else {
+    console.log('有' + username)
+    next()
+  }
+
   // next('/login')
 })
 
