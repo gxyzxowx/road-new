@@ -19,20 +19,17 @@ const routes = [
     },
     component: () => import('./Login.vue')
   },
+  // 控制台
+  {
+    path: '/',
+    name: 'home',
+    component: () => import('./Home.vue')
+  },
   // 总览首页
   {
     path: '/main/home',
-    name: 'home',
+    name: 'main',
     component: () => import('./views/main/Home.vue')
-  },
-  {
-    path: '/login',
-    name: 'login',
-    meta: {
-      title: 'Login - 登录',
-      hideInMenu: true
-    },
-    component: () => import('./Login.vue')
   },
   // 生产监管总览
   {
@@ -99,17 +96,13 @@ var router = new Router({
 router.beforeEach((to, from, next) => {
   // 取得用户数据
   let username = comFun.getCookie('roadusername')
-  if (!username) {
-    console.log('没有' + username)
-    next({
-      name: 'login' // 跳转到登录页
-    })
+  if (!username && to.path !== '/login') {
+    console.log('没有username且不是login来的' + username)
+    next('/login')
   } else {
-    console.log('有' + username)
+    // console.log('有' + username)
     next()
   }
-
-  // next('/login')
 })
 
 // 为了注释报错（相同途径点击会报错）
