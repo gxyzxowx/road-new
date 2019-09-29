@@ -6,31 +6,19 @@
 
 <script>
 export default {
-  name: 'App',
-  created () {
-    // 启动后判断登录状态
-    // let ifLogin = this.comFun.getCookie('roadusername')
-    // if (!ifLogin) {
-    //   this.$router.push('./login')
-    // } else {
-    //   this.$router.push('./home')
-    // }
-  }
+  name: 'App'
 }
 </script>
 
 <style>
-/* .size{
-  width: 100%;
+
+html,body{
   height: 100%;
-} */
-/* html,body{
-  .size;
   overflow: hidden;
   margin: 0;
   padding: 0;
 }
-#app {
-  .size;
-} */
+#app{
+  height: 100%;
+}
 </style>

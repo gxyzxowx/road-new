@@ -30,33 +30,27 @@ a {
   }
 </style>
 <template>
-    <div class="layout">
-        <Layout>
+    <div class="layout" style="height:100%">
+        <Layout  style="height:100%">
             <Header>
                 <Menu mode="horizontal" theme="dark" active-name="1">
                     <div class="layout-logo"></div>
-                    <div class="layout-nav">
+                    <div class="layout-nav" style="display:flex;justify-content:flex-end;">
+
                         <MenuItem name="1">
-                            <Icon type="ios-navigate"></Icon>
-                            Item 1
-                        </MenuItem>
-                        <MenuItem name="2">
-                            <Icon type="ios-keypad"></Icon>
-                            Item 2
-                        </MenuItem>
-                        <MenuItem name="3">
                             <Icon type="ios-analytics"></Icon>
-                            Item 3
+                            新建项目
                         </MenuItem>
-                        <MenuItem name="4">
+                        <MenuItem name="2" @click.native= "exit()">
                             <Icon type="ios-paper"></Icon>
-                            Item 4
+                            退出登录
                         </MenuItem>
                     </div>
                 </Menu>
             </Header>
             <Layout>
-                <Sider hide-trigger :style="{background: '#fff'}">
+                <Sider hide-trigger>
+                   <!-- <Sider hide-trigger :style="{background: '#fff'}"> -->
                     <Menu active-name="1-1" theme="light" width="auto" :open-names="['1']">
                         <Submenu name="1">
                             <template slot="title">
@@ -64,7 +58,7 @@ a {
 
                                项目总览
                             </template>
-                            <MenuItem name="1-1" v-on:click.native="handleGo('/main/home', '首页', '项目总览')">总览</MenuItem>
+                            <MenuItem name="1-1" v-on:click.native="routerLinkM('/main/home', '首页', '项目总览')">总览</MenuItem>
 
                         </Submenu>
                         <Submenu name="2">
@@ -72,21 +66,21 @@ a {
                                 <Icon type="ios-keypad"></Icon>
                                 生产监管
                             </template>
-                            <MenuItem v-for="item in pageData.second" :name=item.name @click.native="handleGo(item.path,item.title, '生产管理')" :key="item.name">{{item.title}}</MenuItem>
+                            <MenuItem v-for="item in pageData.second" :name=item.name @click.native="routerLinkM(item.path,item.title, '生产管理')" :key="item.name">{{item.title}}</MenuItem>
                         </Submenu>
                         <Submenu name="3">
                             <template slot="title">
                                 <Icon type="ios-analytics"></Icon>
                                 施工监管
                             </template>
-                             <MenuItem name="3-1" v-on:click.native="handleGo('/construction/home', '总览', '施工监管')">总览</MenuItem>
+                             <MenuItem name="3-1" v-on:click.native="routerLinkM('/construction/home', '总览', '施工监管')">总览</MenuItem>
                         </Submenu>
                         <Submenu name="4">
                             <template slot="title">
                                 <Icon type="ios-analytics"></Icon>
                                 系统管理
                             </template>
-                            <MenuItem v-for="item in pageData.four" :key=item.name :name=item.name @click.native="handleGo(item.path, item.title, '系统管理')">{{item.title}}</MenuItem>
+                            <MenuItem v-for="item in pageData.four" :key=item.name :name=item.name @click.native="routerLinkM(item.path, item.title, '系统管理')">{{item.title}}</MenuItem>
                         </Submenu>
                     </Menu>
                 </Sider>
@@ -146,10 +140,17 @@ export default {
     }
   },
   methods: {
-    handleGo (url, title, type) {
+    routerLinkM (url, title, type) {
       this.$router.push({ path: url })
       this.nowFirstPage = type
       this.nowSecondPage = title
+    },
+    exit () {
+      // 删除cookie数据并跳转到Login
+      console.log(123)
+      this.comFun.delectCookie('roadusername')
+      // 又跳不起
+      this.$router.push({ name: 'login' })
     }
   }
 }

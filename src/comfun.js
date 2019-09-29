@@ -1,3 +1,10 @@
+import QS from 'qs'
+import axios from 'axios'
+// import vm from './main.js'
+
+// import VueAxios from 'vue-axios'
+
+const BASE_URL = '/api'
 const obj = {
   // 用于取得cookie中的用户名
   getCookie (cname) {
@@ -20,6 +27,32 @@ const obj = {
   // 删除cookie
   delectCookie (cname) {
     this.setCookie(cname, 1, -1)
+  },
+  // 封装axios
+  get (url, params) {
+    return new Promise((resolve, reject) => {
+      axios.get(BASE_URL + url, {
+        params: params
+      }).then(res => {
+        resolve(res.data)
+      }).catch(err => {
+        reject(err.data)
+      })
+    })
+  },
+  post (url, params, that) {
+    that.loading = true
+    return new Promise((resolve, reject) => {
+      axios.post(BASE_URL + url, QS.stringify(params))
+        .then(res => {
+          that.loading = false
+          resolve(res.data)
+        })
+        .catch(err => {
+          that.loading = false
+          reject(err.data)
+        })
+    })
   }
 
 }
