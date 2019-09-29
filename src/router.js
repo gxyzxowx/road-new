@@ -19,71 +19,85 @@ const routes = [
     },
     component: () => import('./Login.vue')
   },
-  // 控制台
+  // Home.vue(HeaderR + router-view)
   {
     path: '/',
     name: 'home',
     component: () => import('./Home.vue'),
     children: [
-      // 总览首页
+      // 新建项目页面
       {
-        path: '/main/home',
-        name: 'main',
-        component: () => import('./views/main/Home.vue')
+        path: '/newproject',
+        name: 'newproject',
+        component: () => import('./views/NewProject.vue')
       },
-      // 生产监管总览
+      // 控制台control
       {
-        path: '/production/home',
-        component: () => import('./views/production/Home.vue')
-      },
-      // 生产数据
-      {
-        path: '/production/produceddata',
-        component: () => import('./views/production/ProducedData.vue')
-      },
-      // 生产质量
-      {
-        path: '/production/productionquality',
-        component: () => import('./views/production/ProductionQuality.vue')
-      },
-      // 级配统计
-      {
-        path: '/production/gradestatistics',
-        component: () => import('./views/production/GradeStatistics.vue')
-      },
-      // 预警统计
-      {
-        path: '/production/warnstatistics',
-        component: () => import('./views/production/WarnStatistics.vue')
-      },
-      // 施工监管总览
-      {
-        path: '/construction/home',
-        component: () => import('./views/construction/Home.vue')
-      },
-      // 项目管理
-      {
-        path: '/system/project',
-        component: () => import('./views/system/Project.vue')
-      },
-      // 设备管理
-      {
-        path: '/system/equipment',
-        component: () => import('./views/system/Equipment.vue')
-      },
-      // 配方管理
-      {
-        path: '/system/recipe',
-        component: () => import('./views/system/Recipe.vue')
-      },
-      // 用户管理
-      {
-        path: '/system/user',
-        component: () => import('./views/system/User.vue')
-      },
-      {
-        path: '/main/test',
-        component: Test
+        path: '/control',
+        name: 'control',
+        component: () => import('./views/Control.vue'),
+        children: [
+          // 总览首页
+          {
+            path: '/main/home',
+            name: 'main',
+            component: () => import('./views/main/Home.vue')
+          },
+          // 生产监管总览
+          {
+            path: '/production/home',
+            component: () => import('./views/production/Home.vue')
+          },
+          // 生产数据
+          {
+            path: '/production/produceddata',
+            component: () => import('./views/production/ProducedData.vue')
+          },
+          // 生产质量
+          {
+            path: '/production/productionquality',
+            component: () => import('./views/production/ProductionQuality.vue')
+          },
+          // 级配统计
+          {
+            path: '/production/gradestatistics',
+            component: () => import('./views/production/GradeStatistics.vue')
+          },
+          // 预警统计
+          {
+            path: '/production/warnstatistics',
+            component: () => import('./views/production/WarnStatistics.vue')
+          },
+          // 施工监管总览
+          {
+            path: '/construction/home',
+            component: () => import('./views/construction/Home.vue')
+          },
+          // 项目管理
+          {
+            path: '/system/project',
+            component: () => import('./views/system/Project.vue')
+          },
+          // 设备管理
+          {
+            path: '/system/equipment',
+            component: () => import('./views/system/Equipment.vue')
+          },
+          // 配方管理
+          {
+            path: '/system/recipe',
+            component: () => import('./views/system/Recipe.vue')
+          },
+          // 用户管理
+          {
+            path: '/system/user',
+            component: () => import('./views/system/User.vue')
+          },
+          {
+            path: '/main/test',
+            component: Test
+          }
+        ]
       }
     ]
   }
