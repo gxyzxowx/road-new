@@ -41,12 +41,12 @@ const routes = [
           {
             path: '/main/home',
             name: 'main',
-            component: () => import('./views/main/Home.vue')
+            component: () => import('./views/main/HomeMain.vue')
           },
           // 生产监管总览
           {
             path: '/production/home',
-            component: () => import('./views/production/Home.vue')
+            component: () => import('./views/production/HomeProduction.vue')
           },
           // 生产数据
           {
@@ -71,7 +71,7 @@ const routes = [
           // 施工监管总览
           {
             path: '/construction/home',
-            component: () => import('./views/construction/Home.vue')
+            component: () => import('./views/construction/HomeConstruction.vue')
           },
           // 项目管理
           {
@@ -112,7 +112,7 @@ var router = new Router({
 // 设置跳转规则（管理员或者未登录状态）
 router.beforeEach((to, from, next) => {
   // 取得用户数据
-  let username = comFun.getCookie('roadusername')
+  let username = comFun.getCookie('roadmUserID')
   if (!username && to.path !== '/login') {
     console.log('没有username且不是login来的' + username)
     next('/login')

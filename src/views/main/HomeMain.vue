@@ -45,13 +45,16 @@ export default {
     }
   },
   watch: {
-    // mItemID: 'openp'
+    // 'this.$store.state.mItemID': this.openp
   },
   mounted () {
     this.mItemID = this.$store.state.mItemID
     // 得到数据
     // 预警类型(bt)
-    this.openp()
+    // 之后看用什么方法解决在请求前先等store中有数据
+    setTimeout(() => {
+      this.openp()
+    }, 500)
   },
   methods: {
     openp () {
