@@ -1,8 +1,8 @@
 <template>
   <div class="control-body">
      <Layout style="height:100%">
-                <Sider hide-trigger>
-                   <!-- <Sider hide-trigger :style="{background: '#fff'}"> -->
+                <!-- <Sider hide-trigger> -->
+                   <Sider hide-trigger :style="{background: '#fff'}">
                     <Menu active-name="1-1" theme="light" width="auto" :open-names="['1']">
                         <Submenu name="1">
                             <template slot="title">
@@ -89,8 +89,13 @@ export default {
       nowSecondPage: '首页'
     }
   },
+  mounted () {
+    // this.$router.push('./main/home')
+    console.log('mounted')
+  },
   created () {
     this.$router.push('./main/home')
+    console.log('created')
   },
   methods: {
     routerLinkM (url, title, type) {

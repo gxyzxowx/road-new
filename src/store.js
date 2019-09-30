@@ -5,11 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    list: []
+    mItemID: ''
   },
   mutations: {
-    setList (state, value) {
-      state.list = value
+    setItem (state, value) {
+      state.mItemID = value
     }
   },
   actions: {

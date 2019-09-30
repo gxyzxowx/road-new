@@ -12,8 +12,11 @@
     <h2 style="margin-bottom:10px;">新建项目</h2>
 
       <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120">
-        <FormItem label="项目名称" prop="name">
+        <!-- <FormItem label="项目名称" prop="name">
           <Input v-model="formValidate.name" placeholder="输入您的项目名称"></Input>
+        </FormItem> -->
+        <FormItem label="项目描述" prop="mItemDes">
+          <Input v-model="formValidate.mItemDes" placeholder="请输入您项目的名称"></Input>
         </FormItem>
         <FormItem label="最大标段数" prop="mItemBidSun">
           <Input v-model.number="formValidate.mItemBidSun" placeholder="用于网页录入和条件控制"></Input>
@@ -26,9 +29,6 @@
             <Radio label="1">施工中</Radio>
             <Radio label="0">已完结</Radio>
           </RadioGroup>
-        </FormItem>
-        <FormItem label="项目描述" prop="mItemDes">
-          <Input v-model="formValidate.mItemDes" placeholder="请输入..."></Input>
         </FormItem>
         <FormItem label="项目负责人" prop="mItemAdmin">
           <Input v-model="formValidate.mItemAdmin" placeholder="请输入..."></Input>

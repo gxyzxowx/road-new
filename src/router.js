@@ -116,8 +116,11 @@ router.beforeEach((to, from, next) => {
   if (!username && to.path !== '/login') {
     console.log('没有username且不是login来的' + username)
     next('/login')
-  } else {
+  } else if (to.name === 'control') {
     // console.log('有' + username)
+    // window.location.reload()
+    next()
+  } else {
     next()
   }
 })

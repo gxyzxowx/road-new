@@ -28,7 +28,7 @@ a {
 <template>
     <div class="layout" style="height:100%">
         <Layout  style="height:100%">
-            <HeaderR @choseToLink="choseToLink"></HeaderR>
+            <HeaderR @reload="reload" @choseToLink="choseToLink" ></HeaderR>
             <router-view/>
         </Layout>
 
@@ -44,13 +44,23 @@ export default {
   created () {
     this.$router.push('/control')
   },
+  mounted () {
+    // this.$router.push('/control')
+  },
   methods: {
+    // 头部切换(子组件emit)
     choseToLink (type) {
       if (type === 0) {
         this.$router.push('/control')
       } else if (type === 1) {
         this.$router.push('/newproject')
       }
+    },
+    // 重新渲染（子组件emit）
+    reload () {
+      console.log('reload')
+
+      this.$router.push('/control')
     }
   },
   components: {
