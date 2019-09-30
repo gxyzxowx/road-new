@@ -10,6 +10,10 @@ export default {
   components: {
     PieChart
   },
+  created () {
+    // 得到数据
+
+  },
   data () {
     return {
       pieData: {

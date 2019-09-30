@@ -61,13 +61,12 @@ export default {
         username: this.username,
         password: this.password
       }
-      // this.loading = true
+
       this.comFun.post('/Login/doLogin', obj, this).then((rs) => {
         console.log(rs)
-        // this.loading = false
         if (rs.code === 0) {
           //   存入cookie
-          this.comFun.setCookie('roadusername', this.username, 1)
+          this.comFun.setCookie('roadmUserID', rs.data.mUserID, 1)
           this.$router.push('/')
           return false
         } else {

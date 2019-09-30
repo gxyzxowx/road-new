@@ -41,7 +41,7 @@ export default {
     exit () {
       // 删除cookie数据并跳转到Login
       console.log('exit')
-      this.comFun.delectCookie('roadusername')
+      this.comFun.delectCookie('roadmUserID')
       // 又跳不起
       this.$router.push({ name: 'login' })
     },

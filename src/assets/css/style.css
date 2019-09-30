@@ -23,7 +23,7 @@
   border: 1px solid #eee;
 }
 .ivu-spin-fix {
-  background: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
 }
 .ivu-row {
   height: 450px;

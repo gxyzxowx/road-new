@@ -20,6 +20,11 @@ a {
     }
   }
 </style>
+<style>
+  .control-body{
+    height: 100%;
+  }
+</style>
 <template>
     <div class="layout" style="height:100%">
         <Layout  style="height:100%">

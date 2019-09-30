@@ -1,6 +1,6 @@
 <template>
-  <div>
-     <Layout>
+  <div class="control-body">
+     <Layout style="height:100%">
                 <Sider hide-trigger>
                    <!-- <Sider hide-trigger :style="{background: '#fff'}"> -->
                     <Menu active-name="1-1" theme="light" width="auto" :open-names="['1']">
@@ -88,6 +88,9 @@ export default {
       nowFirstPage: '总览',
       nowSecondPage: '首页'
     }
+  },
+  created () {
+    this.$router.push('./main/home')
   },
   methods: {
     routerLinkM (url, title, type) {
